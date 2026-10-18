@@ -17,7 +17,7 @@ class SuccessResponse(BaseModel):
         self.timestamp = datetime.now(timezone.utc).isoformat()
 
 class ErrorResponse(BaseModel):
-    """Standard response for success, 
+    """Standard response for error, 
     pydantic validated the every field match its type"""
     status: str = "error"
     message: str = "Something went wrong"
@@ -38,7 +38,7 @@ def success_response(
     return SuccessResponse(message=message, data=data), status_code
 
 def error_response(
-        message : str = "Someting went wrong",
+        message : str = "Something went wrong",
         status_code : int = 400
         ) -> tuple:
     "Build a standard error response tuple (body, status_code)."
