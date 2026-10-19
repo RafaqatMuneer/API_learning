@@ -5,6 +5,7 @@ from config import Config
 from routes.health import router as health_router
 from routes.products import router as products_router
 from routes.uploads import router as uploads_router
+from routes.convert import router as convert_router 
 
 
 def create_app() -> FastAPI:
@@ -17,6 +18,7 @@ def create_app() -> FastAPI:
     app.include_router(health_router, prefix=Config.API_PREFIX)
     app.include_router(products_router, prefix=Config.API_PREFIX)
     app.include_router(uploads_router, prefix=f"{Config.API_PREFIX}/uploads")
+    app.include_router(convert_router,  prefix=f"{Config.API_PREFIX}/convert")
 
     # Global 404 Handler
     @app.exception_handler(404)

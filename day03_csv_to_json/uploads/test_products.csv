@@ -1,0 +1,5 @@
+id,Product Name,price,in stock
+1,Laptop,85000,True
+2,Mouse,1500,True
+3,Monitor,NaN,False
+4,Keyboard,3500,True

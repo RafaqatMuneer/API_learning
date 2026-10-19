@@ -9,6 +9,7 @@ def csv_to_bytes(content: bytes) -> tuple:
     FastAPI gives bytes from UploadFile.read()
     io.BytesIO wraps those bytes into a file-like object
     that pd.read_csv() can consume — no temp file needed."""
+
     try:
         df = pd.read_csv(io.BytesIO(content))
     except pd.errors.EmptyDataError:
@@ -73,12 +74,4 @@ def convert_to_json(content: bytes) -> tuple:
     }
 
     return True, None, result
-
-# content = b"my-Name,age\nAli,25\nSara,NaN"
-
-# success, message, json = convert_to_json(content)
-# if not success:
-#     print(f"Alert! : {message}")
-# else:
-#     print(json)
 
